@@ -579,12 +579,14 @@ public class AddressBook {
     }
 
     /**
-     * Displays all persons in the address book to the user; in added order.
+     * Displays all persons in the address book to the user; in sorted order.
      *
      * @return feedback display message for the operation result
      */
     private static String executeListAllPersonsInAddressBook() {
         ArrayList<String[]> toBeDisplayed = getAllPersonsInAddressBook();
+        //Sorts the address book
+        toBeDisplayed.sort(Comparator.comparing(m -> m[0]));
         showToUser(toBeDisplayed);
         return getMessageForPersonsDisplayedSummary(toBeDisplayed);
     }
